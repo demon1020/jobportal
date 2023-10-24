@@ -16,4 +16,6 @@ Command to install all the required packages at once
 Command to run the local server
 # npm start
 
-# APK will be provided
+
+# Set for Flutter Project
+app_url.dart file : Update the base url with your current ipv4 Address and run the project
