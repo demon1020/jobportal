@@ -19,3 +19,10 @@ Command to run the local server
 
 # Set for Flutter Project
 app_url.dart file : Update the base url with your current ipv4 Address and run the project
+
+# [FILES]
+
+# Server    => https://github.com/demon1020/jobportal.git
+# Flutter   => https://drive.google.com/file/d/1rbbZObd6BXdX9qnV3otGSs4D-kyuMy2n/view?usp=sharing
+
+
