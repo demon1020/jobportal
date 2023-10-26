@@ -6,24 +6,24 @@ const router = express.Router();
 // Create a new user
 router.post('/signup', async (req, res) => {
   try {
-    const { email } = req.body;
+    const { email, username } = req.body;
      // Check if a user with the provided email or username already exists
      const existingUser = await User.findOne({
         where: {
-          [Op.or]: [{ email }],
+          [Op.or]: [{ email }, { username }],
         },
       });
   
       if (existingUser) {
         // User with the same email or username already exists
-        return res.status(400).json({ message: `User with email '${email}' already exists.` });
+        return res.status(400).json({ message: `User with email '${email}' or username '${username}' already exists.` });
       }
       
     const user = await User.create(req.body);
-    res.json(user);
+    res.json({status: 200, message: "Signed up successfully",data : user});
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'An error occurred while creating the user.' });
+    res.status(500).json({ error: 'An error occurred while creating the user.' });
   }
 });
 
@@ -34,7 +34,7 @@ router.get('/', async (req, res) => {
     res.json(users);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'An error occurred while fetching users.' });
+    res.status(500).json({ error: 'An error occurred while fetching users.' });
   }
 });
 
@@ -47,7 +47,7 @@ router.post('/signin', async (req, res) => {
 
     if (user) {
       // User found, authentication successful
-      res.json(user);
+      res.json({status: 200, message: "Signed in successfully",data : user});
     } else {
       // User not found, return authentication error
       res.status(401).json({ message: 'Authentication failed. Invalid email or password.' });

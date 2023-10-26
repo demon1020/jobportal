@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
         where: conditions,
       });
   
-      res.json(jobNames);
+      res.json({status: 200, message: "Fetched data successfully",data : jobNames});
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'An error occurred while fetching job names.' });

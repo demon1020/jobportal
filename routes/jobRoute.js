@@ -16,10 +16,10 @@ router.get('/search', async (req, res) => {
           },
         },
       });
-      res.status(200).json(jobs);
+      res.status(200).json({status: 200, message: "Fetched data successfully",data : jobs});
     } else {
       const jobs = await Job.findAll();
-      res.status(200).json(jobs);
+      res.status(200).json({status: 200, message: "Fetched data successfully",data : jobs});
     }
   } catch (error) {
     console.error(error);
